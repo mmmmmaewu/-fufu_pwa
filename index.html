@@ -6,16 +6,24 @@
   <title>福福記帳</title>
   <link rel="manifest" href="manifest.json" />
   <link rel="icon" href="icon-192.png" />
-  <meta name="theme-color" content="#ffffff"/>
-</head>
-<body>
-  <h1>歡迎來到福福記帳！</h1>
-  <p>這是一個簡易版 PWA 網站。</p>
+
+
   <script>
     if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('service-worker.js')
-        .then(() => console.log('Service Worker registered.'));
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service-worker.js')
+          .then((registration) => {
+            console.log('Service Worker registered with scope:', registration.scope);
+          })
+          .catch((error) => {
+            console.log('Service Worker registration failed:', error);
+          });
+      });
     }
   </script>
+</head>
+</head>
+<body>
+
 </body>
 </html>
