@@ -20,9 +20,21 @@
           });
       });
     }
+
+      const scriptUrl = "https://script.google.com/macros/s/AKfycbwGMESY9ch6yNQXC1ydTLIJqU-Sp3kyI7n1-t-Sb18KLvVS_46ce-Mc2lie2hYNVhtm/exec";
+      
+      // 用 fetch 呼叫你的 API
+      fetch(scriptUrl)
+        .then(response => response.json())
+        .then(data => {
+          console.log('Data from Google Apps Script:', data);
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
   </script>
 </head>
-</head>
+
 <body>
 
 </body>
