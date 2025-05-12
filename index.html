@@ -1,14 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hant">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="福福記帳 - 你的個人財務記帳工具" />
+  <meta name="theme-color" content="#000000" />
   <title>福福記帳</title>
+
+  <!-- Manifest -->
   <link rel="manifest" href="manifest.json" />
+  
+  <!-- Favicon -->
   <link rel="icon" href="icon-192.png" />
 
-
   <script>
+    // 註冊 Service Worker
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
         navigator.serviceWorker.register('/service-worker.js')
@@ -21,22 +27,26 @@
       });
     }
   </script>
-
 </head>
 
 <body>
-   <script>
-      const scriptUrl = "https://script.google.com/macros/s/AKfycbwGMESY9ch6yNQXC1ydTLIJqU-Sp3kyI7n1-t-Sb18KLvVS_46ce-Mc2lie2hYNVhtm/exec";
-      
-      // 用 fetch 呼叫你的 API
-      fetch(scriptUrl)
-        .then(response => response.json())
-        .then(data => {
-          console.log('Data from Google Apps Script:', data);
-        })
-        .catch(error => {
-          console.error('Error:', error);
-        });
+  <h1>福福記帳</h1>
+  <p>正在加載您的數據...</p>
+
+  <script>
+    // Google Apps Script Web App URL
+    const scriptUrl = "https://script.google.com/macros/s/AKfycbwGMESY9ch6yNQXC1ydTLIJqU-Sp3kyI7n1-t-Sb18KLvVS_46ce-Mc2lie2hYNVhtm/exec";
+    
+    // 用 fetch 呼叫 Google Apps Script API
+    fetch(scriptUrl)
+      .then(response => response.json())
+      .then(data => {
+        console.log('Data from Google Apps Script:', data);
+        // 可以在這裡處理從 Google Apps Script 獲得的數據
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
   </script>
 </body>
 </html>
